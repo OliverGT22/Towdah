@@ -1,6 +1,4 @@
 package Controles;
-
-;
 import Utilitarios.Commons;
 import Autenticacion.authbd;
 import Conexion.conexion;
