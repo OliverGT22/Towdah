@@ -1,0 +1,57 @@
+<?page title="Sistema de Operaciones"?>
+<?link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link rel="icon" href="img/marex.png" type="image/png"?>
+<?link href="style.css" rel="stylesheet" type="text/css"?>
+
+<zk xmlns:n="native">
+    <div apply="Controles.login" sclass="col-md-12 col-sm-12">   
+        <div sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+            <!-- Brand Logo -->
+            <n:br/>
+                 
+            <image sclass="img-responsive" src="/img/titulo.png" />
+         
+            <n:br/>
+            
+        </div>
+  
+        <div   sclass="col-md-12 col-sm-12">
+
+            <div sclass="col-md-12 col-sm-12 page-header text-center">       
+                <label id="lbInicio" value="" style="font-weight: bold;"/>
+            </div>
+            <div>
+                <groupbox
+                    style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
+                    closable="false" width="300px;" mold="3d">
+                    <caption>
+                        <label value="Ingreso a Sistema" style="font-size: 15px;" />
+                    </caption>
+                    <vlayout style="margin: 10px;">
+                        <label value="Usuario" />
+                        <textbox id="txtUser" maxlength="30" width="250px" constraint="no empty: Debe ingresar su usuario" focus="true" />
+                        <label value="Contraseña" />
+                        <textbox id="txtPass" type="password" maxlength="30" width="250px" constraint="no empty: Debe ingresar su clave" />
+                        <n:br/>
+                        <hlayout>
+                            <button id="btnLogin" label="Ingresar" style="font-weight: bold; margin-left:20px; font-size: 14px; color: black "/>
+                            <button id="btnRecuperar" label="Recuperar Clave" style="font-weight: bold; font-size: 14px; color: black "/>
+                        </hlayout>
+                    </vlayout>
+                </groupbox>
+            </div>
+            <div sclass="col-md-12 col-sm-12 row">
+                <n:br/>
+                <n:br/>
+                <n:br/>
+                <n:br/>
+                <n:br/>
+            </div>
+
+            <div sclass="col-md-12 col-sm-12  text-center py-12" >
+                © 2022 Plantilla Ingenieria Software S.A. Todos los Derechos Reservados
+            </div>
+
+        </div>
+    </div>
+</zk>

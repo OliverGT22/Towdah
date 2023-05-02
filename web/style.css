@@ -1,0 +1,23 @@
+.titulos {
+  color: #ffffff;
+  font-size: 22px;
+  font-family:'Open Sans';
+  font-weight:bold;
+  text-shadow: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  letter-spacing: 1px;
+}
+.titulos:hover,
+.titulos:focus {
+  color: #ffffff;
+}
+
+.navbar {
+  margin: 0;
+  padding: 0 20px;
+  border: 0;
+  min-height: 45px;
+  position: relative;
+  background: #1e2455;
+}

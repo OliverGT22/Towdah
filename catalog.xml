@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" uri="src/conf/xml-resources/web-service-references/Procesos_Remolcadores/wsdl/10.75.1.37_8020/Procesos_Remolcadores.asmx"/>
+    <system systemId="http://localhost:44324/Procesos_Remolcadores.asmx?wsdl" uri="src/conf/xml-resources/web-service-references/Procesos_Remolcadores/wsdl/localhost_44324/Procesos_Remolcadores.asmx.wsdl"/>
+    <system systemId="http://10.75.1.37:8020/Procesos_Remolcadores.asmx?wsdl" uri="src/conf/xml-resources/web-service-references/Procesos_Remolcadores/wsdl/10.75.1.37_8020/Procesos_Remolcadores.asmx.wsdl"/>
+</catalog>

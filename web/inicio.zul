@@ -1,0 +1,11 @@
+<div sclass="col-md-12 col-sm-12" xmlns:n="native" >
+  
+        <n:center>
+    <div sclass="col-md-12 col-sm-12 " id="imagen">
+                
+            <image sclass="img-responsive" src="/img/inicio.jpeg" />
+        
+        </div>
+    </n:center>
+</div>
+

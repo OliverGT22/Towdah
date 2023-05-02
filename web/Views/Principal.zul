@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns:n="native">
+
+        <div class="col col-md-12 col-sm-12 text-center" style="margin-top:20px;">
+            <n:h1 class="hprincipal" >Sistema de Operaciones Empresarial</n:h1>
+            <image id="" src="bootstrap/img/minerales.jpg" width="35%"  height="35%"/>
+        </div>
+</zk>

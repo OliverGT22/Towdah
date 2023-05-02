@@ -1,0 +1,56 @@
+
+<zk xmlns:n="native">
+    <div apply="Controles.RestaurarClave" xmlns:n="native" sclass="col-md-12 col-sm-12" >
+        <groupbox
+            style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
+            closable="false" width="90%;" mold="3d">
+                
+            <div sclass="row" >
+                <div sclass="col-md-12">
+            
+                    <n:br/>
+                    <div sclass="row" >
+                        <div sclass="col-sm-1 col-md-3"/>
+                        <div sclass="col-sm-10 col-md-6">
+                            <label value="USUARIO " style="font-weight: bold; font-size: 24px; color: black "  />
+                            <textbox   id="txtUsuario" style=" font-size: 24px; color: black "    width="100%" value=""    maxlength="900"/>
+                     
+                        </div>
+                        <div sclass="col-sm-1 col-md-3"/>
+                    </div>
+          
+                    <n:br/>
+                    <div sclass="row" >
+                        
+                        <div sclass="col-sm-1 col-md-3"/>
+                        <div sclass="col-sm-10 col-md-6">
+                            <label value="NOMBRE " style="font-weight: bold; font-size:24px; color: black "  />
+                            <textbox   id="txtNombre" style=" font-size: 24px; color: black "  readonly="true" value="" maxlength="1800" width="100%"/>
+                   
+                        </div>
+                        
+                         
+                    </div>
+                    
+                     <n:br/>
+                    <div sclass="row" >
+                        <div sclass="col-sm-3 col-md-3"/>
+                        <div sclass="col-sm-2 col-md-3">
+                            <button label="Guardar"  width="100%"    id="btnGuardar" sclass="btn btn-primary btn-md" />
+                        </div>
+                         <div sclass="col-sm-3 col-md-3">
+                            <button label="Cancelar" width="100%"    id="btnCancelar" sclass="btn btn-primary btn-md" />
+                        </div>
+                        <div sclass="col-sm-1 col-md-3"/>
+                         
+                    </div>
+                    
+                    <n:br/>
+          
+                </div> 
+            </div>
+  
+        </groupbox>    
+
+    </div>
+</zk>

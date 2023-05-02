@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ProbarServicio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProbarServicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProbarServicioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_Clientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_ClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_ClientesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_DatosBuque">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_DatosBuqueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_DatosBuqueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ProbarServicioSoapIn">
+    <wsdl:part name="parameters" element="tns:ProbarServicio" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioSoapOut">
+    <wsdl:part name="parameters" element="tns:ProbarServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_Clientes" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_ClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_DatosBuque" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_DatosBuqueResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Procesos_RemolcadoresSoap">
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioSoapIn" />
+      <wsdl:output message="tns:ProbarServicioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesSoapIn" />
+      <wsdl:output message="tns:Consulta_ClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueSoapIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Procesos_RemolcadoresHttpGet">
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioHttpGetIn" />
+      <wsdl:output message="tns:ProbarServicioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesHttpGetIn" />
+      <wsdl:output message="tns:Consulta_ClientesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueHttpGetIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Procesos_RemolcadoresHttpPost">
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioHttpPostIn" />
+      <wsdl:output message="tns:ProbarServicioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesHttpPostIn" />
+      <wsdl:output message="tns:Consulta_ClientesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueHttpPostIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Procesos_RemolcadoresSoap" type="tns:Procesos_RemolcadoresSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProbarServicio">
+      <soap:operation soapAction="http://tempuri.org/ProbarServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <soap:operation soapAction="http://tempuri.org/Consulta_Clientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <soap:operation soapAction="http://tempuri.org/Consulta_DatosBuque" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresSoap12" type="tns:Procesos_RemolcadoresSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ProbarServicio">
+      <soap12:operation soapAction="http://tempuri.org/ProbarServicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_Clientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_DatosBuque" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresHttpGet" type="tns:Procesos_RemolcadoresHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="ProbarServicio">
+      <http:operation location="/ProbarServicio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <http:operation location="/Consulta_Clientes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <http:operation location="/Consulta_DatosBuque" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresHttpPost" type="tns:Procesos_RemolcadoresHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="ProbarServicio">
+      <http:operation location="/ProbarServicio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <http:operation location="/Consulta_Clientes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <http:operation location="/Consulta_DatosBuque" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Procesos_Remolcadores">
+    <wsdl:port name="Procesos_RemolcadoresSoap" binding="tns:Procesos_RemolcadoresSoap">
+      <soap:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresSoap12" binding="tns:Procesos_RemolcadoresSoap12">
+      <soap12:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresHttpGet" binding="tns:Procesos_RemolcadoresHttpGet">
+      <http:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresHttpPost" binding="tns:Procesos_RemolcadoresHttpPost">
+      <http:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

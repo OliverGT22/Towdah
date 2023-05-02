@@ -1,0 +1,680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Crear_Actividad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crear_ActividadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Crear_ActividadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Modificar_Actividad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Modificar_ActividadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Modificar_ActividadResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crear_Actividad_Practicos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crear_Actividad_PracticosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Crear_Actividad_PracticosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crear_Actividad_Prueba">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Crear_Actividad_PruebaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Crear_Actividad_PruebaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProbarServicio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ProbarServicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ProbarServicioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_Clientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_ClientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_ClientesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_Practicos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_PracticosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_PracticosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_DatosBuque">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Consulta_DatosBuqueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Consulta_DatosBuqueResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Crear_ActividadSoapIn">
+    <wsdl:part name="parameters" element="tns:Crear_Actividad" />
+  </wsdl:message>
+  <wsdl:message name="Crear_ActividadSoapOut">
+    <wsdl:part name="parameters" element="tns:Crear_ActividadResponse" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadSoapIn">
+    <wsdl:part name="parameters" element="tns:Modificar_Actividad" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadSoapOut">
+    <wsdl:part name="parameters" element="tns:Modificar_ActividadResponse" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosSoapIn">
+    <wsdl:part name="parameters" element="tns:Crear_Actividad_Practicos" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosSoapOut">
+    <wsdl:part name="parameters" element="tns:Crear_Actividad_PracticosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaSoapIn">
+    <wsdl:part name="parameters" element="tns:Crear_Actividad_Prueba" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaSoapOut">
+    <wsdl:part name="parameters" element="tns:Crear_Actividad_PruebaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioSoapIn">
+    <wsdl:part name="parameters" element="tns:ProbarServicio" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioSoapOut">
+    <wsdl:part name="parameters" element="tns:ProbarServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_Clientes" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_ClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_Practicos" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_PracticosResponse" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueSoapIn">
+    <wsdl:part name="parameters" element="tns:Consulta_DatosBuque" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueSoapOut">
+    <wsdl:part name="parameters" element="tns:Consulta_DatosBuqueResponse" />
+  </wsdl:message>
+  <wsdl:message name="Crear_ActividadHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_ActividadHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_ActividadHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_ActividadHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Modificar_ActividadHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PracticosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Crear_Actividad_PruebaHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ProbarServicioHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_ClientesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_PracticosHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="Consulta_DatosBuqueHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:portType name="Procesos_RemolcadoresSoap">
+    <wsdl:operation name="Crear_Actividad">
+      <wsdl:input message="tns:Crear_ActividadSoapIn" />
+      <wsdl:output message="tns:Crear_ActividadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <wsdl:input message="tns:Modificar_ActividadSoapIn" />
+      <wsdl:output message="tns:Modificar_ActividadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <wsdl:input message="tns:Crear_Actividad_PracticosSoapIn" />
+      <wsdl:output message="tns:Crear_Actividad_PracticosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <wsdl:input message="tns:Crear_Actividad_PruebaSoapIn" />
+      <wsdl:output message="tns:Crear_Actividad_PruebaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioSoapIn" />
+      <wsdl:output message="tns:ProbarServicioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesSoapIn" />
+      <wsdl:output message="tns:Consulta_ClientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <wsdl:input message="tns:Consulta_PracticosSoapIn" />
+      <wsdl:output message="tns:Consulta_PracticosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueSoapIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Procesos_RemolcadoresHttpGet">
+    <wsdl:operation name="Crear_Actividad">
+      <wsdl:input message="tns:Crear_ActividadHttpGetIn" />
+      <wsdl:output message="tns:Crear_ActividadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <wsdl:input message="tns:Modificar_ActividadHttpGetIn" />
+      <wsdl:output message="tns:Modificar_ActividadHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <wsdl:input message="tns:Crear_Actividad_PracticosHttpGetIn" />
+      <wsdl:output message="tns:Crear_Actividad_PracticosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <wsdl:input message="tns:Crear_Actividad_PruebaHttpGetIn" />
+      <wsdl:output message="tns:Crear_Actividad_PruebaHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioHttpGetIn" />
+      <wsdl:output message="tns:ProbarServicioHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesHttpGetIn" />
+      <wsdl:output message="tns:Consulta_ClientesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <wsdl:input message="tns:Consulta_PracticosHttpGetIn" />
+      <wsdl:output message="tns:Consulta_PracticosHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueHttpGetIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="Procesos_RemolcadoresHttpPost">
+    <wsdl:operation name="Crear_Actividad">
+      <wsdl:input message="tns:Crear_ActividadHttpPostIn" />
+      <wsdl:output message="tns:Crear_ActividadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <wsdl:input message="tns:Modificar_ActividadHttpPostIn" />
+      <wsdl:output message="tns:Modificar_ActividadHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <wsdl:input message="tns:Crear_Actividad_PracticosHttpPostIn" />
+      <wsdl:output message="tns:Crear_Actividad_PracticosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <wsdl:input message="tns:Crear_Actividad_PruebaHttpPostIn" />
+      <wsdl:output message="tns:Crear_Actividad_PruebaHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <wsdl:input message="tns:ProbarServicioHttpPostIn" />
+      <wsdl:output message="tns:ProbarServicioHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <wsdl:input message="tns:Consulta_ClientesHttpPostIn" />
+      <wsdl:output message="tns:Consulta_ClientesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <wsdl:input message="tns:Consulta_PracticosHttpPostIn" />
+      <wsdl:output message="tns:Consulta_PracticosHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <wsdl:input message="tns:Consulta_DatosBuqueHttpPostIn" />
+      <wsdl:output message="tns:Consulta_DatosBuqueHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Procesos_RemolcadoresSoap" type="tns:Procesos_RemolcadoresSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Crear_Actividad">
+      <soap:operation soapAction="http://tempuri.org/Crear_Actividad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <soap:operation soapAction="http://tempuri.org/Modificar_Actividad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <soap:operation soapAction="http://tempuri.org/Crear_Actividad_Practicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <soap:operation soapAction="http://tempuri.org/Crear_Actividad_Prueba" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <soap:operation soapAction="http://tempuri.org/ProbarServicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <soap:operation soapAction="http://tempuri.org/Consulta_Clientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <soap:operation soapAction="http://tempuri.org/Consulta_Practicos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <soap:operation soapAction="http://tempuri.org/Consulta_DatosBuque" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresSoap12" type="tns:Procesos_RemolcadoresSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Crear_Actividad">
+      <soap12:operation soapAction="http://tempuri.org/Crear_Actividad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <soap12:operation soapAction="http://tempuri.org/Modificar_Actividad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <soap12:operation soapAction="http://tempuri.org/Crear_Actividad_Practicos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <soap12:operation soapAction="http://tempuri.org/Crear_Actividad_Prueba" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <soap12:operation soapAction="http://tempuri.org/ProbarServicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_Clientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_Practicos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <soap12:operation soapAction="http://tempuri.org/Consulta_DatosBuque" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresHttpGet" type="tns:Procesos_RemolcadoresHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Crear_Actividad">
+      <http:operation location="/Crear_Actividad" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <http:operation location="/Modificar_Actividad" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <http:operation location="/Crear_Actividad_Practicos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <http:operation location="/Crear_Actividad_Prueba" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <http:operation location="/ProbarServicio" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <http:operation location="/Consulta_Clientes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <http:operation location="/Consulta_Practicos" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <http:operation location="/Consulta_DatosBuque" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Procesos_RemolcadoresHttpPost" type="tns:Procesos_RemolcadoresHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Crear_Actividad">
+      <http:operation location="/Crear_Actividad" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Modificar_Actividad">
+      <http:operation location="/Modificar_Actividad" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Practicos">
+      <http:operation location="/Crear_Actividad_Practicos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Crear_Actividad_Prueba">
+      <http:operation location="/Crear_Actividad_Prueba" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProbarServicio">
+      <http:operation location="/ProbarServicio" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Clientes">
+      <http:operation location="/Consulta_Clientes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_Practicos">
+      <http:operation location="/Consulta_Practicos" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Consulta_DatosBuque">
+      <http:operation location="/Consulta_DatosBuque" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Procesos_Remolcadores">
+    <wsdl:port name="Procesos_RemolcadoresSoap" binding="tns:Procesos_RemolcadoresSoap">
+      <soap:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresSoap12" binding="tns:Procesos_RemolcadoresSoap12">
+      <soap12:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresHttpGet" binding="tns:Procesos_RemolcadoresHttpGet">
+      <http:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+    <wsdl:port name="Procesos_RemolcadoresHttpPost" binding="tns:Procesos_RemolcadoresHttpPost">
+      <http:address location="http://10.75.1.37:8020/Procesos_Remolcadores.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

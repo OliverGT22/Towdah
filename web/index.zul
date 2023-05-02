@@ -1,0 +1,4 @@
+<?page title="Redireccionando"?>
+<window title="" border="none" width="200px" apply="Controles.index">
+	<label value="Redireccionando..." />
+</window>

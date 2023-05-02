@@ -1,0 +1,98 @@
+
+<zk xmlns:n="native">
+    <div  apply = "Controles.CtrLCategoria" xmlns:n="native" sclass="col-md-12 col-sm-12" >
+        <groupbox
+            style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
+            closable="false" width="100%;" mold="3d">
+                
+            <div sclass="row" >
+                <div sclass="col-md-1">
+           
+                </div>
+                <div sclass="col-md-10">
+            
+                    <div sclass="row" >
+                        <div sclass="col-md-12 text-center">
+                            <label value="REGISTRO CATEGORIA" style="font-size:20px; font-weight:bold;"   />
+                        </div>
+                    </div>
+                    <div id ="formulario" >
+                        <div sclass="row" >
+                          
+                            <div sclass="col-sm-4 col-md-2"></div>
+                            <div sclass="col-sm-4 col-md-8">
+                                <label value="ID " style="font-weight:bold;"  />
+                                <intbox id="txtId"   readonly="true" width="100%"  />
+                            </div>
+                        
+                            <div sclass="col-sm-4 col-md-2"></div>
+                        </div>
+                        <div sclass="row" >
+                          
+                            <div sclass="col-sm-4 col-md-2"></div>
+                            <div sclass="col-sm-4 col-md-8">
+                                <label value="DESCRIPCION " style="font-weight:bold;"  />
+                                <textbox id="txtDesc"   readonly="false" width="100%" value="" />                           
+                                
+                            </div>
+                        
+                            <div sclass="col-sm-4 col-md-2"></div>
+                        </div>
+                    
+                        <div sclass="row" >
+                          
+                            <div sclass="col-sm-4 col-md-2"></div>
+                            <div sclass="col-sm-4 col-md-8">
+                                <label value="PADRE " style="font-weight:bold;"  />
+                                <combobox id="cbxPadre"  width="100%" value="" />                           
+                                
+                            </div>
+                        
+                            <div sclass="col-sm-4 col-md-2"></div>
+                        </div>
+                    
+                        <n:br/>
+                    
+                        <div sclass="row" >
+                            <div sclass="col-md-3"/>
+                            <div sclass="col-md-2">
+                                <button label="Guardar"  width="100%"  iconSclass="z-icon-save" id="btnGuardar" sclass="btn btn-primary btn-lg active" />
+                            </div>
+                            <div sclass="col-md-2">
+                                <button label="Actualizar" width="100%"  iconSclass="z-icon-print" id="btnActualizar" sclass="btn btn-primary btn-lg active" />
+                            </div>
+                            <div sclass="col-md-2">
+                                <button label="Limpiar" width="100%"   iconSclass="z-icon-eraser" id="btnLimpiar" sclass="btn btn-primary btn-lg active" />
+                            </div>
+                        
+                            <div sclass="col-md-3"/>
+                        </div>
+                    </div>  
+                    <n:br/>
+                    
+                    <separator/>
+                    <div sclass="row" >
+                        <div sclass="col-md-1"/>
+                        <div sclass="col-md-10">
+                            <grid sclass="domain"  mold="paging"  pageSize="10"  id="dataGrid" emptyMessage="No Hay Boletas">
+                                <columns>
+                                    <column label="ID"  sort="auto"  width ="15%"/>
+                                    <column label="Descripcion"  sort="auto"  width ="35%"/>
+                                    <column label="Padre"   sort="auto" width ="35%" />
+                                    <column label="Acciones"  width ="15%"/>
+                                </columns>
+                                <rows id="rows">
+                                </rows>
+                            </grid>
+                        </div>
+                        <div sclass="col-md-1"/>
+                    </div>
+                </div>
+                <div sclass="col-md-1">
+          
+                </div>
+            </div>
+        </groupbox>    
+       
+    </div>
+</zk>
