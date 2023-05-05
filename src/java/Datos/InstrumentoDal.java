@@ -152,6 +152,7 @@ public class InstrumentoDal {
                 Buscar.setTipo(result.getString(3));
                 Buscar.setCaracteristicas(result.getString(4));
                 Buscar.setCategoria(result.getString(5));
+                
                 lista.add(Buscar);
             }
             Buscar = null;
@@ -161,11 +162,8 @@ public class InstrumentoDal {
                 {
                     if (instrumento.getCategoria().equals(categoria.getId())) {
                         Buscar = new InstrumentoMd();
-                        Buscar.setId(instrumento.getId());
-                        Buscar.setModelo(instrumento.getModelo());
-                        Buscar.setTipo(instrumento.getTipo());
-                        Buscar.setCaracteristicas(instrumento.getCaracteristicas());
-                        Buscar.setCaracteristicas(categoria.getDescripcion());
+                        Buscar = instrumento;
+                        Buscar.setCategoria(categoria.getDescripcion());
                         lista2.add(Buscar);
                     }
                 }

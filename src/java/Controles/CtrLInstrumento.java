@@ -195,6 +195,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
     private Row row;
     public List<CategoriaMd> datosaux;
     public List<InstrumentoMd> datos;
+    
     private int banderaGrid = 0;
 
     public void LlenarGrid() throws SQLException, ParseException {
