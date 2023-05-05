@@ -3,7 +3,9 @@ package Datos;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import Conexion.conexion;
-import Modelos.InstrumentoMd; 
+import Modelos.InstrumentoMd;
+import Modelos.CategoriaMd;
+import Datos.CategoriaDal;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -127,9 +129,14 @@ public class InstrumentoDal {
 
         InstrumentoMd Buscar = null;
 
-        String sql = "";
+        String sql = "", sql2 = "";
 
-        sql = "select INST_ID, INST_MODELO, INST_TIPO, INST_CARACT, (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = i.Categoria_CAT_ID ) FROM INSTRUMENTO i ";
+        //sql = "select INST_ID, INST_MODELO, INST_TIPO, INST_CARACT, (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = i.Categoria_CAT_ID ) FROM INSTRUMENTO i ";
+        sql = "select * FROM INSTRUMENTO";
+        List <CategoriaMd> categorias = new ArrayList<CategoriaMd>();
+        CategoriaDal buscarCategoriaPadre = new CategoriaDal();
+        List<InstrumentoMd> lista2 = new ArrayList<InstrumentoMd>();
+        categorias = buscarCategoriaPadre.buscaGrid();
         //+ filtro;
 
         try {
@@ -147,6 +154,22 @@ public class InstrumentoDal {
                 Buscar.setCategoria(result.getString(5));
                 lista.add(Buscar);
             }
+            Buscar = null;
+            for (InstrumentoMd instrumento:lista)
+            {
+                for (CategoriaMd categoria:categorias)
+                {
+                    if (instrumento.getCategoria().equals(categoria.getId())) {
+                        Buscar = new InstrumentoMd();
+                        Buscar.setId(instrumento.getId());
+                        Buscar.setModelo(instrumento.getModelo());
+                        Buscar.setTipo(instrumento.getTipo());
+                        Buscar.setCaracteristicas(instrumento.getCaracteristicas());
+                        Buscar.setCaracteristicas(categoria.getDescripcion());
+                        lista2.add(Buscar);
+                    }
+                }
+            }
         } catch (Exception e) {
         } finally {
             if (smt != null) {
@@ -161,7 +184,7 @@ public class InstrumentoDal {
                 conn = null;
             }
         }
-        return lista;
+        return lista2;
 
     }
 
