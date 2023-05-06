@@ -1,11 +1,11 @@
 package Controles;
 
-import Datos.InstrumentoDal;
-import Modelos.InstrumentoMd;
-import Modelos.CategoriaMd;
+import Datos.AsistenciaDal;
+import Modelos.AsistenciaMd;
+import Utilitarios.Utilitarios;
 
 //import Util.Reportes;
-import Utilitarios.Utilitarios;
+//import Util.Utilitarios;
 import com.itextpdf.text.DocumentException;
 
 import java.io.ByteArrayInputStream;
@@ -50,6 +50,7 @@ import org.xml.sax.SAXException;
 import org.zkoss.zk.ui.event.EventListener;
 import org.zkoss.zk.ui.util.GenericForwardComposer;
 import org.zkoss.zul.Button;
+import org.zkoss.zul.Checkbox;
 import org.zkoss.zul.Combobox;
 import org.zkoss.zul.Comboitem;
 import org.zkoss.zul.Datebox;
@@ -60,36 +61,39 @@ import org.zkoss.zul.Label;
 import org.zkoss.zul.Row;
 import org.zkoss.zul.Rows;
 import org.zkoss.zul.Timebox;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
 
-public class CtrLInstrumento extends GenericForwardComposer {
+public class CtrLAsistencia extends GenericForwardComposer {
 
     private Intbox txtId;
-    private Textbox txtMod;
-    private Textbox txtCar;
-    private Intbox txtCantidad;
-    
-    private Combobox cbxTipo;
-    private Combobox cbxPadre; 
-    
+    private Textbox txtFecha;
+    private Combobox cbxValor;
+    private Combobox cbxCita;
     private Button btnGuardar;
     private Button btnImprimir;
     
     Div formulario;
 
     private static final long serialVersionUID = 1L;
+    
 
     Utilitarios util = new Utilitarios();
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    LocalDateTime now = LocalDateTime.now();
 
     Session Session = Sessions.getCurrent();
 
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
- 
-        util.cargaCombox("select CAT_ID, concat(CAT_DESCRIPCION, \", \", (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = C.CAT_PADRE ))as Categoria from CATEGORIA C", cbxPadre);
+        
+        txtFecha.setText((dtf.format(now)));
+        System.out.println("Fecha asignada");
+        util.cargaCombox("SELECT CIT_ID, CONCAT(CIT_DIA, \", \", CIT_HORA, \", \", (SELECT ALU_NOMBRE FROM ALUMNO WHERE ALU_ID = c.Alumno_ALU_ID)) AS CITA FROM CITAS c", cbxCita);
+        System.out.println("Combobox Cita");        
+        System.out.println("Combobox Valor");
         LlenarGrid();
-        //util.cargaCombox2(datosaux, cbxPadre);
-
         
         if(!Session.getAttribute("ROL").toString().equals("A")){
             formulario.setVisible(false);
@@ -99,73 +103,77 @@ public class CtrLInstrumento extends GenericForwardComposer {
     public void limpiar() {
 
         txtId.setText("");
-        txtMod.setText("");
-        cbxPadre.setText("");
-        txtCar.setText("");
-        cbxTipo.setText("");
+        txtFecha.setText((dtf.format(now)));
+        cbxValor.setText("");
+        cbxCita.setText("");
 
         btnGuardar.setDisabled(false);
         //btnImprimir.setDisabled(true);
 
     }
+    
+    public void visualizarDatos(){
+        System.out.println("ID: " + txtId.getText());
+        System.out.println("Fecha: " + txtFecha.getText());
+        System.out.println("Asistencia: " + cbxValor.getSelectedItem().getValue().toString());
+        System.out.println("Cita: " + cbxCita.getSelectedItem().getValue().toString());
+    }
 
-    public void onClick$btnGuardar(Event evt) {
+    public void onClick$btnGuardar(Event evt) throws SQLException {
 
-        if (this.txtMod.getText().equals("")) {
+        if (this.txtFecha.getText().equals("") || this.cbxValor.getSelectedItem().getValue().toString().equals("")
+                || this.cbxCita.getSelectedItem().getValue().toString().equals("")) {
 
             Messagebox.show("FALTAN DATOS QUE INGRESAR", "Informacion", Messagebox.OK, Messagebox.EXCLAMATION);
 
         } else {
+            
+                AsistenciaMd modelo = new AsistenciaMd();
 
-            InstrumentoMd modelo = new InstrumentoMd();
+                try {
+                    visualizarDatos();
 
-            try {
+                    modelo.setId(txtId.getText());
+                    modelo.setFecha(util.cambio_fecha(txtFecha.getText()));
+                    modelo.setValor(cbxValor.getSelectedItem().getValue().toString());
+                    modelo.setCita(cbxCita.getSelectedItem().getValue().toString());
+                    AsistenciaDal bd = new AsistenciaDal();
 
-                modelo.setId(txtId.getText());
-                modelo.setModelo(txtMod.getText().toUpperCase());
-                modelo.setTipo(cbxTipo.getText());  
-                modelo.setCaracteristicas(txtCar.getText().toUpperCase());
-                modelo.setCategoria(cbxPadre.getSelectedItem().getValue().toString());
-                modelo.setExist(txtCantidad.getText());
-                InstrumentoDal bd = new InstrumentoDal();
+                    int res = bd.Crear(modelo);
+                    if (res > 0) { 
 
-                int res = bd.Crear(modelo);
-                if (res > 0) { 
+                        LlenarGrid();
+                        limpiar();
+                        Messagebox.show("REGISTRO INGRESADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
+                    } else {
+                        Messagebox.show("ERROR AL INSERTAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
+                    }
 
-                    LlenarGrid();
-                    limpiar();
-                    Messagebox.show("REGISTRO INGRESADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
-                } else {
-                    Messagebox.show("ERROR AL INSERTAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
+                } catch (Exception e) {
+                    Messagebox.show("ERROR AL INSERTAR EL REGISTRO, " + e.toString() + " COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
                 }
-
-            } catch (Exception e) {
-                Messagebox.show("ERROR AL INSERTAR EL REGISTRO, " + e.toString() + " COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
             }
-
-        }
-
     }
     
     public void onClick$btnActualizar(Event evt) {
 
-        if (txtId.getText().equals("") || this.txtMod.getText().equals("")) {
+        if (this.txtFecha.getText().equals("") || this.cbxValor.getSelectedItem().getValue().toString().equals("")
+                || this.cbxCita.getSelectedItem().getValue().toString().equals("")) {
 
             Messagebox.show("FALTAN DATOS QUE INGRESAR", "Informacion", Messagebox.OK, Messagebox.EXCLAMATION);
 
         } else {
 
-            InstrumentoMd modelo = new InstrumentoMd();
+            AsistenciaMd modelo = new AsistenciaMd();
 
             try {
+                visualizarDatos();
 
                 modelo.setId(txtId.getText());
-                modelo.setModelo(txtMod.getText().toUpperCase());
-                modelo.setTipo(cbxTipo.getText());  
-                modelo.setCaracteristicas(txtCar.getText().toUpperCase());
-                modelo.setCategoria(cbxPadre.getSelectedItem().getValue().toString());
-               
-                InstrumentoDal bd = new InstrumentoDal();
+                modelo.setFecha(txtFecha.getText());
+                modelo.setValor(cbxValor.getSelectedItem().getValue().toString());
+                modelo.setCita(cbxCita.getSelectedItem().getValue().toString());
+                AsistenciaDal bd = new AsistenciaDal();
 
                 int res = bd.Actualizar(modelo);
                 if (res > 0) { 
@@ -193,13 +201,11 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
     private Rows rows;
     private Row row;
-    public List<CategoriaMd> datosaux;
-    public List<InstrumentoMd> datos;
-    
+    public List<AsistenciaMd> datos;
     private int banderaGrid = 0;
 
     public void LlenarGrid() throws SQLException, ParseException {
-        InstrumentoDal buscar = new InstrumentoDal();
+        AsistenciaDal buscar = new AsistenciaDal();
 
         datos = buscar.buscaGrid();
         if (banderaGrid == 1) {
@@ -208,24 +214,18 @@ public class CtrLInstrumento extends GenericForwardComposer {
             banderaGrid = 0;
         }
 
-        for (InstrumentoMd mov : datos) {
+        for (AsistenciaMd mov : datos) {
             banderaGrid = 1;
             Label id = new Label();
             ValoresLabel(id, mov.getId(), "");
-            
-            Label Modelo = new Label();
-            ValoresLabel(Modelo, mov.getModelo(), "");
-            
-            Label Tipo = new Label();
-            ValoresLabel(Tipo, mov.getTipo(), "");
-            
-            Label Caracteristicas = new Label();
-            ValoresLabel(Caracteristicas, mov.getCaracteristicas(), "");
-            
-            Label Categoria = new Label();
-            ValoresLabel(Categoria, mov.getCategoria(), "");
-            
-            
+            Label fecha = new Label();
+            ValoresLabel(fecha, mov.getFecha(), "");
+            Label valor = new Label();
+            ValoresLabel(valor, mov.getValor(), "");
+            Label cita = new Label();
+            ValoresLabel(cita, mov.getCita(), "");
+            Label alumno = new Label();
+            ValoresLabel(alumno, mov.getAlumno(), "");
 
             Div acciones = new Div();
             acciones.setClass("text-center");
@@ -238,11 +238,10 @@ public class CtrLInstrumento extends GenericForwardComposer {
             row = new Row();
             row.setStyle("border-style:solid;border-width:1px");
             row.appendChild(id);
-            row.appendChild(Modelo);
-            row.appendChild(Tipo);
-            row.appendChild(Caracteristicas);
-            row.appendChild(Categoria);
-         
+            row.appendChild(fecha);
+            row.appendChild(valor);
+            row.appendChild(cita);
+            row.appendChild(alumno);
 
             row.appendChild(acciones);
 
@@ -258,24 +257,20 @@ public class CtrLInstrumento extends GenericForwardComposer {
     EventListener actualizar = new EventListener<Event>() {
         @Override
         public void onEvent(Event event) throws SQLException, IOException, DocumentException, ParseException {
-            InstrumentoMd modelo = new InstrumentoMd();
-            InstrumentoDal dal = new InstrumentoDal();
+            AsistenciaMd modelo = new AsistenciaMd();
+            AsistenciaDal buscar = new AsistenciaDal();
+            String idBuscar = null;
             Button button = (Button) event.getTarget();
             Div div = (Div) button.getParent();
             Row row = (Row) div.getParent();
 
             modelo = row.getValue();
-            modelo = dal.BuscarClientes(modelo.getId());
+            idBuscar = modelo.getId();
+            modelo = buscar.BuscarClientes(idBuscar);
             txtId.setText(modelo.getId());
-            txtMod.setText(modelo.getModelo());
-            txtCar.setText(modelo.getCaracteristicas());
-            
-            
-            int n = Integer.valueOf(modelo.getCategoria());
-            cbxPadre.setSelectedIndex(n-1);
-      
-            cbxTipo.setText(modelo.getTipo());
-            
+            txtFecha.setText(modelo.getFecha());
+            cbxValor.setSelectedIndex(Integer.valueOf(modelo.getValor()));
+            cbxCita.setSelectedIndex(Integer.valueOf(modelo.getCita())-1);
 
         }
     };
