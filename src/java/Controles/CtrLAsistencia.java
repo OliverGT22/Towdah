@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -219,9 +220,9 @@ public class CtrLAsistencia extends GenericForwardComposer {
             Label id = new Label();
             ValoresLabel(id, mov.getId(), "");
             Label fecha = new Label();
-            ValoresLabel(fecha, mov.getFecha(), "");
+            ValoresLabel(fecha, convertirFecha(mov.getFecha()), "");
             Label valor = new Label();
-            ValoresLabel(valor, mov.getValor(), "");
+            ValoresLabel(valor, convertir_valor(mov.getValor()), "");
             Label cita = new Label();
             ValoresLabel(cita, mov.getCita(), "");
             Label alumno = new Label();
@@ -286,6 +287,26 @@ public class CtrLAsistencia extends GenericForwardComposer {
         button.setStyle(style);
         button.setVisible(visible);
         button.setLabel(label);
+    }
+    
+    public String convertir_valor(String asi_valor){
+        String respuesta="";
+        
+        if(Integer.valueOf(asi_valor) == 0){
+            respuesta ="No asistió";
+        }else if(Integer.valueOf(asi_valor) == 1){
+            respuesta = "Asistió";
+        }
+        return respuesta;
+    }
+    
+    public static String convertirFecha(String fecha) {
+        // Creamos un objeto LocalDate a partir de la fecha en formato "yyyy-mm-dd"
+        LocalDate localDate = LocalDate.parse(fecha, DateTimeFormatter.ISO_DATE);
+        // Creamos un nuevo formato para la fecha "dd-mm-yyyy"
+        DateTimeFormatter nuevoFormato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        // Convertimos la fecha al nuevo formato y la devolvemos como un String
+        return localDate.format(nuevoFormato);
     }
 
 //    public void onClick$btnImprimir(Event evt) throws SQLException, DocumentException {
