@@ -102,7 +102,7 @@ public class Utilitarios {
         }
     }
     
-    public void cargaCombox2(List<CategoriaMd> consulta, Combobox co) throws SQLException {
+    public void cargaCombox2(List<CategoriaMd> consulta, Combobox co) {
 
         co.getItems().clear();
 
@@ -120,11 +120,29 @@ public class Utilitarios {
         
     }
     
+        public void cargaCombox3(List<String> opciones, Combobox co) {
+
+        co.getItems().clear();
+        int numOpcion = 0;
+        Comboitem item = new Comboitem();
+        for (String buscar:opciones) {
+            item = new Comboitem();
+            item.setLabel(buscar);
+            item.setValue(String.valueOf(numOpcion));
+            item.setParent(co);
+            numOpcion++;
+        }
+
+        co.setValue(null);
+
+        
+    }
+    
     public String cambio_fecha(String fecha) {
         String f = "";
 
-        SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
             f = myFormat.format(fromUser.parse(fecha));
