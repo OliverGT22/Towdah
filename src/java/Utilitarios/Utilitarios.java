@@ -120,17 +120,46 @@ public class Utilitarios {
         
     }
     
-        public void cargaCombox3(List<String> opciones, Combobox co) {
+        public void cargaCombox3(String paquete, Combobox co) throws SQLException {
+        PreparedStatement smt = null;
+        Connection conn;
+        conexion conex = new conexion();
+        conn = conex.getConnection();
+        ResultSet rst = null;
 
         co.getItems().clear();
-        int numOpcion = 0;
-        Comboitem item = new Comboitem();
-        for (String buscar:opciones) {
+
+        try {
+
+            Comboitem item = new Comboitem();
+            smt = conn.prepareStatement(paquete);
+            rst = smt.executeQuery();
+
+            while (rst.next()) {
+                item = new Comboitem();
+                item.setLabel(rst.getString(2));
+                item.setValue(rst.getString(1));
+                item.setParent(co);
+            }
             item = new Comboitem();
-            item.setLabel(buscar);
-            item.setValue(String.valueOf(numOpcion));
+            item.setLabel("");
+            item.setValue("");
             item.setParent(co);
-            numOpcion++;
+
+            co.setValue(null);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (smt != null) {
+                smt.close();
+            }
+            if (rst != null) {
+                smt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
 
         co.setValue(null);
