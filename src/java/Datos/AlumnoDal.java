@@ -13,6 +13,7 @@ public class AlumnoDal {
 
     public int Crear(AlumnoMd modelo) throws SQLException {
         {
+         //Prueba de Pull
             PreparedStatement smt = null;
             Connection conn;
             conexion conex = new conexion();
