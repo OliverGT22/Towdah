@@ -44,7 +44,8 @@
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
                                 <label value="ASISTENCIA " style="font-weight:bold;"  />
-                                <combobox id="cbxValor"  width="100%" value="">
+                                
+                                <combobox id="cbxValor" width="100%" readonly="true" value="" inplace="false" autodrop="true" style="border: 1px solid #c8c8c8;">
                                     <comboitem label="No asistió" value = "0"/>
                                     <comboitem label="Asistió" value = "1"/>
                                 </combobox>                           
