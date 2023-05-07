@@ -102,7 +102,7 @@ public class Utilitarios {
         }
     }
     
-    public void cargaCombox2(List<CategoriaMd> consulta, Combobox co) throws SQLException {
+    public void cargaCombox2(List<CategoriaMd> consulta, Combobox co) {
 
         co.getItems().clear();
 
@@ -120,11 +120,58 @@ public class Utilitarios {
         
     }
     
+        public void cargaCombox3(String paquete, Combobox co) throws SQLException {
+        PreparedStatement smt = null;
+        Connection conn;
+        conexion conex = new conexion();
+        conn = conex.getConnection();
+        ResultSet rst = null;
+
+        co.getItems().clear();
+
+        try {
+
+            Comboitem item = new Comboitem();
+            smt = conn.prepareStatement(paquete);
+            rst = smt.executeQuery();
+
+            while (rst.next()) {
+                item = new Comboitem();
+                item.setLabel(rst.getString(2));
+                item.setValue(rst.getString(1));
+                item.setParent(co);
+            }
+            item = new Comboitem();
+            item.setLabel("");
+            item.setValue("");
+            item.setParent(co);
+
+            co.setValue(null);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (smt != null) {
+                smt.close();
+            }
+            if (rst != null) {
+                smt.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        co.setValue(null);
+
+        
+    }
+    
     public String cambio_fecha(String fecha) {
         String f = "";
 
-        SimpleDateFormat fromUser = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat fromUser = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat myFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
             f = myFormat.format(fromUser.parse(fecha));

@@ -1,6 +1,6 @@
 
 <zk xmlns:n="native">
-    <div  apply = "Controles.CtrLCalendarizacion" xmlns:n="native" sclass="col-md-12 col-sm-12" >
+    <div  apply = "Controles.CtrLAsistencia" xmlns:n="native" sclass="col-md-12 col-sm-12" >
         <groupbox
             style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
             closable="false" width="100%;" mold="3d">
@@ -13,7 +13,7 @@
             
                     <div sclass="row" >
                         <div sclass="col-md-12 text-center">
-                            <label value="Calendarizacion Citas" style="font-size:20px; font-weight:bold;"   />
+                            <label value="REGISTRO ASISTENCIA" style="font-size:20px; font-weight:bold;"   />
                         </div>
                     </div>
                     <div id ="formulario" >
@@ -31,8 +31,8 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="DIA " style="font-weight:bold;"  />
-                                <textbox id="txtDia"   readonly="false" width="100%" value="" />                           
+                                <label value="FECHA " style="font-weight:bold;"  />
+                                <textbox id="txtFecha"   readonly="true" width="100%" value="" />                           
                                 
                             </div>
                         
@@ -43,8 +43,13 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="HORA " style="font-weight:bold;"  />
-                                <timebox id="txtHora" format="HH:mm:ss" width="100%" />                           
+                                <label value="ASISTENCIA " style="font-weight:bold;"  />
+                                
+                                <combobox id="cbxValor" width="100%" readonly="true" value="" inplace="false" autodrop="true" style="border: 1px solid #c8c8c8;">
+                                    <comboitem label="No asistió" value = "0"/>
+                                    <comboitem label="Asistió" value = "1"/>
+                                    <comboitem label="" value = ""/>
+                                </combobox>                           
                                 
                             </div>
                         
@@ -57,37 +62,14 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="ALUMNO " style="font-weight:bold;"  />
-                                <combobox id="cbxAlu"  width="100%" value=""/>                         
-                                
+                                <label value="CITA" style="font-weight:bold;"  />
+                                <combobox id="cbxCita"   width="100%"  maxlength="900"/>
                             </div>
                         
                             <div sclass="col-sm-4 col-md-2"></div>
                         </div>
                     
-                        <div sclass="row" >
-                          
-                            <div sclass="col-sm-4 col-md-2"></div>
-                            <div sclass="col-sm-4 col-md-8">
-                                <label value="INSTRUCTOR " style="font-weight:bold;"  />
-                                <combobox id="cbxIns"  width="100%" value=""/>                         
-                                
-                            </div>
                         
-                            <div sclass="col-sm-4 col-md-2"></div>
-                        </div>
-                        
-                        <div sclass="row" >
-                          
-                            <div sclass="col-sm-4 col-md-2"></div>
-                            <div sclass="col-sm-4 col-md-8">
-                                <label value="CATEGORIA " style="font-weight:bold;"  />
-                                <combobox id="cbxCat"  width="100%" value=""/>                         
-                                
-                            </div>
-                        
-                            <div sclass="col-sm-4 col-md-2"></div>
-                        </div>
                     
                         <n:br/>
                     
@@ -115,12 +97,11 @@
                             <grid sclass="domain"  mold="paging"  pageSize="10"  id="dataGrid" emptyMessage="No Hay Boletas">
                                 <columns>
                                     <column label="Id"  sort="auto"  width ="10%"/>
-                                    <column label="Dia"  sort="auto"  width ="16%"/>
-                                    <column label="Hora"   sort="auto" width ="16%" />
-                                    <column label="Alumno"   sort="auto"  width ="16%"/>
-                                    <column label="Instructor"   sort="auto"  width ="16%"/>
-                                    <column label="Categoria"   sort="auto"  width ="16%"/>
-                                    <column label="Acciones"  width ="10%"/>
+                                    <column label="Fecha"  sort="auto"  width ="30%"/>
+                                    <column label="Asistencia"   sort="auto" width ="30%" />
+                                    <column label="Cita"   sort="auto"  width ="30%"/>
+                                    <column label="Alumno"   sort="auto"  width ="30%"/>
+                                    <column label="Acciones"  width ="15%"/>
                                 </columns>
                                 <rows id="rows">
                                 </rows>
