@@ -84,6 +84,11 @@ public class MenuPage extends GenericForwardComposer {
         pagina.setSrc("/Views/Citas/Calendarizacion.zul");
         lbInicio.setValue("Calendarizacion Citas");
     }
+    public void onClick$cCobro(Event even) {
+        pagina.setSrc("/Views/Registros/COBROS.zul");
+        lbInicio.setValue("Control de cobros");
+    }
+    
     
     public void onClick$iCreaUsuario(Event even) {
         pagina.setSrc("/CreacionUsuario.zul");
