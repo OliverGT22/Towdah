@@ -1,0 +1,132 @@
+<?page title="Sistema de Operaciones"?>
+<?link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link rel="icon" href="img/marex.png" type="image/png"?>
+<?link href="style.css" rel="stylesheet" type="text/css"?>
+
+
+<zk xmlns:n="native">
+    <div apply="Controles.CtrLCalendarizacionSR" sclass="col-md-12 col-sm-12">   
+        <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+            <!-- Brand Logo -->
+            <n:br/>
+            <hlayout>
+                <image src="img/marex.png" sclass="pull-left"/>
+                <vlayout>
+                    <a label="Plantilla de Compra Ventas S.A. " sclass="titulos" />
+                    <a label="Sistema de Operaciones " sclass="titulos"  />
+                </vlayout> 
+            </hlayout>
+            <n:br/>
+            
+        </div>
+  
+        <div   sclass="col-md-12 col-sm-12">
+
+            <div sclass="col-md-12 col-sm-12 page-header text-center">       
+                <label id="lbInicio" value="" style="font-size:30px; font-weight: bold;"/>
+            </div>
+            <div>
+                <groupbox
+                    style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
+                    closable="false" width="90%;" mold="3d">
+                
+                       
+            <div sclass="row" >
+                <div sclass="col-md-1">
+           
+                </div>
+                <div sclass="col-md-10">
+            
+                    <div sclass="row" >
+                        <div sclass="col-md-12 text-center">
+                            <label value="Calendarizacion Citas" style="font-size:20px; font-weight:bold;"   />
+                        </div>
+                    </div>
+                    <div id ="formulario" >
+                                   
+                 
+                        <div sclass="row" >
+                          
+                            <div sclass="col-sm-4 col-md-2"></div>
+                            <div sclass="col-sm-4 col-md-8">
+                                <label value="ALUMNO " style="font-weight:bold;"  />
+                                <combobox id="cbxAlu"  width="100%" value=""/>                         
+                                
+                            </div>
+                        
+                            <div sclass="col-sm-4 col-md-2"></div>
+                        </div>
+                    
+                        <div sclass="row" >
+                          
+                            <div sclass="col-sm-4 col-md-2"></div>
+                            <div sclass="col-sm-4 col-md-8">
+                                <label value="INSTRUCTOR " style="font-weight:bold;"  />
+                                <combobox id="cbxIns"  width="100%" value=""/>                         
+                                
+                            </div>
+                        
+                            <div sclass="col-sm-4 col-md-2"></div>
+                        </div>
+                        
+                       
+                    
+                        <n:br/>
+                    
+                        <div sclass="row" >
+                            <div sclass="col-md-3"/>
+                             <div sclass="col-md-2">
+                                    <button label="Guardar"  width="100%"  iconSclass="z-icon-search" id="btnGuardar" sclass="btn btn-primary btn-lg active" />
+                                </div>
+                                
+                                <div sclass="col-md-2">
+                                    <button label="Restaurar" width="100%"   iconSclass="z-icon-spinner" id="btnRest" sclass="btn btn-primary btn-lg active" />
+                                </div>                  
+                            <div sclass="col-md-3"/>
+                        </div>
+                    </div>  
+                    <n:br/>
+                    
+                    <separator/>
+                    <div sclass="row" >
+                        <div sclass="col-md-1"/>
+                        <div sclass="col-md-10">
+                            <grid sclass="domain"  mold="paging"  pageSize="10"  id="dataGrid" emptyMessage="No Hay Boletas">
+                                <columns>
+                                    <column label="Id"  sort="auto"  width ="10%"/>
+                                    <column label="Dia"  sort="auto"  width ="16%"/>
+                                    <column label="Hora"   sort="auto" width ="16%" />
+                                    <column label="Alumno"   sort="auto"  width ="16%"/>
+                                    <column label="Instructor"   sort="auto"  width ="16%"/>
+                                    <column label="Categoria"   sort="auto"  width ="16%"/>
+                                </columns>
+                                <rows id="rows">
+                                </rows>
+                            </grid>
+                        </div>
+                        <div sclass="col-md-1"/>
+                    </div>
+                </div>
+                <div sclass="col-md-1">
+          
+                </div>
+            </div>
+  
+                </groupbox>    
+
+            </div>
+            <div sclass="col-md-12 col-sm-12 row">
+                <n:br/>
+                <n:br/>
+                <n:br/>
+                <n:br/>
+                <n:br/>
+            </div>
+
+            <div sclass="col-md-12 col-sm-12  text-center py-12" >
+                © 2022 Plantilla Louis Vuitton S.A. Todos los Derechos Reservados
+            </div>
+
+        </div>
+    </div>
+</zk>

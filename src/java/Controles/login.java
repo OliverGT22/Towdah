@@ -116,6 +116,10 @@ public class login extends Commons {
             Messagebox.show("Ocurrió un error al intentar validar el usuario en Base de Datos, intente nuevamente.", "Información", Messagebox.OK, Messagebox.ERROR);
         }
     }
+    
+    public void onClick$btnHorario (Event event) throws SQLException{
+         execution.sendRedirect("HorariosSR.zul");
+    }
 
     public void onOK$txtPass(Event evt) throws SQLException {
         onClick$btnLogin(evt);
