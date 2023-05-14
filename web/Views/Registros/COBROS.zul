@@ -1,6 +1,6 @@
 
 <zk xmlns:n="native">
-    <div  apply = "Controles.CtrLAsistencia" xmlns:n="native" sclass="col-md-12 col-sm-12" >
+    <div  apply = "" xmlns:n="native" sclass="col-md-12 col-sm-12" >
         <groupbox
             style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
             closable="false" width="100%;" mold="3d">
@@ -13,7 +13,7 @@
             
                     <div sclass="row" >
                         <div sclass="col-md-12 text-center">
-                            <label value="REGISTRO ASISTENCIA" style="font-size:20px; font-weight:bold;"   />
+                            <label value="REGISTRO CLIENTES" style="font-size:20px; font-weight:bold;"   />
                         </div>
                     </div>
                     <div id ="formulario" >
@@ -31,8 +31,8 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="FECHA " style="font-weight:bold;"  />
-                                <textbox id="txtFecha"   readonly="true" width="100%" value="" />                           
+                                <label value="NOMBRE " style="font-weight:bold;"  />
+                                <textbox id="txtNombre"   readonly="false" width="100%" value="" />                           
                                 
                             </div>
                         
@@ -43,13 +43,8 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="ASISTENCIA " style="font-weight:bold;"  />
-                                
-                                <combobox id="cbxValor" width="100%" readonly="true" value="" inplace="false" autodrop="true" style="border: 1px solid #c8c8c8;">
-                                    <comboitem label="No asistió" value = "0"/>
-                                    <comboitem label="Asistió" value = "1"/>
-                                    <comboitem label="" value = ""/>
-                                </combobox>                           
+                                <label value="DIRECCION " style="font-weight:bold;"  />
+                                <textbox id="txtDireccion"   readonly="false" width="100%" value="" />                           
                                 
                             </div>
                         
@@ -62,8 +57,8 @@
                           
                             <div sclass="col-sm-4 col-md-2"></div>
                             <div sclass="col-sm-4 col-md-8">
-                                <label value="CITA" style="font-weight:bold;"  />
-                                <combobox id="cbxCita"   width="100%"  maxlength="900"/>
+                                <label value="TELEFONO" style="font-weight:bold;"  />
+                                <intbox id="txtTelefono"   width="100%"  maxlength="900"/>
                             </div>
                         
                             <div sclass="col-sm-4 col-md-2"></div>
@@ -97,10 +92,9 @@
                             <grid sclass="domain"  mold="paging"  pageSize="10"  id="dataGrid" emptyMessage="No Hay Boletas">
                                 <columns>
                                     <column label="Id"  sort="auto"  width ="10%"/>
-                                    <column label="Fecha"  sort="auto"  width ="30%"/>
-                                    <column label="Asistencia"   sort="auto" width ="30%" />
-                                    <column label="Cita"   sort="auto"  width ="30%"/>
-                                    <column label="Alumno"   sort="auto"  width ="30%"/>
+                                    <column label="Nombre"  sort="auto"  width ="30%"/>
+                                    <column label="Direccion"   sort="auto" width ="30%" />
+                                    <column label="Telefono"   sort="auto"  width ="30%"/>
                                     <column label="Acciones"  width ="15%"/>
                                 </columns>
                                 <rows id="rows">
