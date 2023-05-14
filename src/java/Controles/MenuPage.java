@@ -75,6 +75,11 @@ public class MenuPage extends GenericForwardComposer {
         lbInicio.setValue("Registro Alumnos");
     }
     
+    public void onClick$rgstrAst(Event even) {
+        pagina.setSrc("/Views/Registros/Asistencia.zul");
+        lbInicio.setValue("Registro Asistencia");
+    }
+    
     public void onClick$itemCitasd(Event even) {
         pagina.setSrc("/Views/Citas/Calendarizacion.zul");
         lbInicio.setValue("Calendarizacion Citas");
