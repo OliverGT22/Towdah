@@ -37,6 +37,9 @@
                             <button id="btnLogin" label="Ingresar" style="font-weight: bold; margin-left:20px; font-size: 14px; color: black "/>
                             <button id="btnRecuperar" label="Recuperar Clave" style="font-weight: bold; font-size: 14px; color: black "/>
                         </hlayout>
+                        <hlayout>
+                            <button id="btnHorario" label="Consultar Horarios" style="font-weight: bold; margin-left:20px; font-size: 14px; color: black"/>
+                        </hlayout>
                     </vlayout>
                 </groupbox>
             </div>
