@@ -33,6 +33,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -72,6 +73,7 @@ public class CtrLAsistencia extends GenericForwardComposer {
     private Combobox cbxCita;
     private Button btnGuardar;
     private Button btnImprimir;
+    private Button btnActualizar;
     
     Div formulario;
 
@@ -87,12 +89,9 @@ public class CtrLAsistencia extends GenericForwardComposer {
     @Override
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
-        
+        btnActualizar.setDisabled(true);
         txtFecha.setText((dtf.format(now)));
-        System.out.println("Fecha asignada");
-        util.cargaCombox("SELECT CIT_ID, CONCAT(CIT_DIA, \", \", CIT_HORA, \", \", (SELECT ALU_NOMBRE FROM ALUMNO WHERE ALU_ID = c.Alumno_ALU_ID)) AS CITA FROM CITAS c", cbxCita);
-        System.out.println("Combobox Cita");        
-        System.out.println("Combobox Valor");
+        util.cargaCombox3("SELECT CIT_ID, CONCAT(CIT_DIA, \", \", CIT_HORA, \", \", (SELECT ALU_NOMBRE FROM ALUMNO WHERE ALU_ID = c.Alumno_ALU_ID)) AS CITA FROM CITAS c", cbxCita);
         LlenarGrid();
         
         if(!Session.getAttribute("ROL").toString().equals("A")){
@@ -104,10 +103,12 @@ public class CtrLAsistencia extends GenericForwardComposer {
 
         txtId.setText("");
         txtFecha.setText((dtf.format(now)));
-        cbxValor.setText("");
-        cbxCita.setText("");
-
+        cbxValor.setSelectedIndex(cbxValor.getItemCount()-1);
+        cbxCita.setSelectedIndex(cbxCita.getItemCount()-1);
+        
+        btnActualizar.setDisabled(true);
         btnGuardar.setDisabled(false);
+        cbxCita.setDisabled(false);
         //btnImprimir.setDisabled(true);
 
     }
@@ -131,7 +132,7 @@ public class CtrLAsistencia extends GenericForwardComposer {
                 AsistenciaMd modelo = new AsistenciaMd();
 
                 try {
-                    visualizarDatos();
+                    //visualizarDatos();
 
                     modelo.setId(txtId.getText());
                     modelo.setFecha(util.cambio_fecha(txtFecha.getText()));
@@ -144,6 +145,7 @@ public class CtrLAsistencia extends GenericForwardComposer {
 
                         LlenarGrid();
                         limpiar();
+                        btnActualizar.setDisabled(true);
                         Messagebox.show("REGISTRO INGRESADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
                     } else {
                         Messagebox.show("ERROR AL INSERTAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
@@ -167,7 +169,7 @@ public class CtrLAsistencia extends GenericForwardComposer {
             AsistenciaMd modelo = new AsistenciaMd();
 
             try {
-                visualizarDatos();
+                //visualizarDatos();
 
                 modelo.setId(txtId.getText());
                 modelo.setFecha(txtFecha.getText());
@@ -180,6 +182,8 @@ public class CtrLAsistencia extends GenericForwardComposer {
 
                     LlenarGrid();
                     limpiar();
+                    btnGuardar.setDisabled(false);
+                    cbxCita.setDisabled(false);
                     Messagebox.show("REGISTRO ACTUALIZADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
                 } else {
                     Messagebox.show("ERROR AL ACTUALIZAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
@@ -219,9 +223,9 @@ public class CtrLAsistencia extends GenericForwardComposer {
             Label id = new Label();
             ValoresLabel(id, mov.getId(), "");
             Label fecha = new Label();
-            ValoresLabel(fecha, mov.getFecha(), "");
+            ValoresLabel(fecha, convertirFecha(mov.getFecha()), "");
             Label valor = new Label();
-            ValoresLabel(valor, mov.getValor(), "");
+            ValoresLabel(valor, convertir_valor(mov.getValor()), "");
             Label cita = new Label();
             ValoresLabel(cita, mov.getCita(), "");
             Label alumno = new Label();
@@ -271,6 +275,10 @@ public class CtrLAsistencia extends GenericForwardComposer {
             txtFecha.setText(modelo.getFecha());
             cbxValor.setSelectedIndex(Integer.valueOf(modelo.getValor()));
             cbxCita.setSelectedIndex(Integer.valueOf(modelo.getCita())-1);
+            cbxCita.setText(cbxCita.getSelectedItem().getLabel());
+            btnGuardar.setDisabled(true);
+            btnActualizar.setDisabled(false);
+            cbxCita.setDisabled(true);
 
         }
     };
@@ -286,6 +294,26 @@ public class CtrLAsistencia extends GenericForwardComposer {
         button.setStyle(style);
         button.setVisible(visible);
         button.setLabel(label);
+    }
+    
+    public String convertir_valor(String asi_valor){
+        String respuesta="";
+        
+        if(Integer.valueOf(asi_valor) == 0){
+            respuesta ="No asistió";
+        }else if(Integer.valueOf(asi_valor) == 1){
+            respuesta = "Asistió";
+        }
+        return respuesta;
+    }
+    
+    public static String convertirFecha(String fecha) {
+        // Creamos un objeto LocalDate a partir de la fecha en formato "yyyy-mm-dd"
+        LocalDate localDate = LocalDate.parse(fecha, DateTimeFormatter.ISO_DATE);
+        // Creamos un nuevo formato para la fecha "dd-mm-yyyy"
+        DateTimeFormatter nuevoFormato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        // Convertimos la fecha al nuevo formato y la devolvemos como un String
+        return localDate.format(nuevoFormato);
     }
 
 //    public void onClick$btnImprimir(Event evt) throws SQLException, DocumentException {
