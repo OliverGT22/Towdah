@@ -129,7 +129,7 @@ public class CalendarizacionSRDal {
 
         String sql = "";
 
-        sql = "select CIT_ID, CIT_DIA, CIT_HORA, concat(Alumno_ALU_ID, ', ', (SELECT(ALU_NOMBRE) From ALUMNO Where ALU_ID = c.Alumno_ALU_ID )), concat(CIT_INSTR, ', ', (SELECT(USR_NOMBRE) From CTRL_USUARIOS Where USR_CODIGO = c.CIT_INSTR )), concat(Categoria_CAT_ID, ', ', (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = c.Categoria_CAT_ID )) FROM CITAS c ORDER BY CIT_ID ASC";
+        sql = "select CIT_ID, CIT_DIA, CIT_HORA, concat(Alumno_ALU_ID, ', ', (SELECT(ALU_NOMBRE) From ALUMNO Where ALU_ID = c.Alumno_ALU_ID )), concat(CIT_INSTR, ', ', (SELECT(USR_NOMBRE) From CTRL_USUARIOS Where USR_CODIGO = c.CIT_INSTR )), concat(Categoria_CAT_ID, ', ', (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = c.Categoria_CAT_ID )) FROM CITAS c where CIT_ID = 0 ORDER BY CIT_ID ASC";
         //+ filtro;
 
         try {
