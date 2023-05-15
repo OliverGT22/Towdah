@@ -39,7 +39,6 @@
                             <menuitem label="Registro Categoria" id = "rgstrCat"/>
                             <menuitem label="Registro Instrumento" id = "rgstrIst"/>
                             <menuitem label="Registro Alumno" id = "rgstrAlu"/>
-                            <menuitem label="Registro Asistencia" id = "rgstrAst"/>
                             <menuitem label="Control de cobros" id = "cCobro"/>
                         </menupopup>
                     </menu>
