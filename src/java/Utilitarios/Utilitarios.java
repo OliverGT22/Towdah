@@ -114,6 +114,11 @@ public class Utilitarios {
             item.setValue(buscar.getId());
             item.setParent(co);
         }
+        
+        item = new Comboitem();
+        item.setLabel("");
+        item.setValue("");
+        item.setParent(co);
 
         co.setValue(null);
 
