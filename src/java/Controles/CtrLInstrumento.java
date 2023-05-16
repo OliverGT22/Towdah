@@ -1,6 +1,8 @@
 package Controles;
 
 import Datos.InstrumentoDal;
+import Datos.CategoriaDal;
+import Modelos.CategoriaMd;
 import Modelos.InstrumentoMd;
 import Modelos.CategoriaMd;
 
@@ -66,13 +68,14 @@ public class CtrLInstrumento extends GenericForwardComposer {
     private Intbox txtId;
     private Textbox txtMod;
     private Textbox txtCar;
-    private Intbox txtCantidad;
+    private Intbox txtExis;
     
     private Combobox cbxTipo;
     private Combobox cbxPadre; 
     
     private Button btnGuardar;
     private Button btnImprimir;
+    private Button btnActualizar;
     
     Div formulario;
 
@@ -86,9 +89,10 @@ public class CtrLInstrumento extends GenericForwardComposer {
     public void doAfterCompose(Component comp) throws Exception {
         super.doAfterCompose(comp);
  
-        util.cargaCombox("select CAT_ID, concat(CAT_DESCRIPCION, \", \", (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = C.CAT_PADRE ))as Categoria from CATEGORIA C", cbxPadre);
+        //util.cargaCombox3("select CAT_ID, concat(CAT_DESCRIPCION, \", \", (SELECT(CAT_DESCRIPCION) From CATEGORIA Where CAT_ID = C.CAT_PADRE ))as Categoria from CATEGORIA C", cbxPadre);
+        btnActualizar.setDisabled(true);
         LlenarGrid();
-        //util.cargaCombox2(datosaux, cbxPadre);
+        util.cargaCombox2(datosaux, cbxPadre);
 
         
         if(!Session.getAttribute("ROL").toString().equals("A")){
@@ -100,10 +104,12 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
         txtId.setText("");
         txtMod.setText("");
-        cbxPadre.setText("");
+        cbxPadre.setSelectedIndex(cbxPadre.getItemCount()-1);
         txtCar.setText("");
-        cbxTipo.setText("");
+        cbxTipo.setSelectedIndex(cbxTipo.getItemCount()-1);
+        txtExis.setText("");
 
+        btnActualizar.setDisabled(true);
         btnGuardar.setDisabled(false);
         //btnImprimir.setDisabled(true);
 
@@ -111,7 +117,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
     public void onClick$btnGuardar(Event evt) {
 
-        if (this.txtMod.getText().equals("")) {
+        if (this.txtMod.getText().equals("") || this.cbxPadre.getText().equals("") || this.cbxTipo.getText().equals("")) {
 
             Messagebox.show("FALTAN DATOS QUE INGRESAR", "Informacion", Messagebox.OK, Messagebox.EXCLAMATION);
 
@@ -126,7 +132,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
                 modelo.setTipo(cbxTipo.getText());  
                 modelo.setCaracteristicas(txtCar.getText().toUpperCase());
                 modelo.setCategoria(cbxPadre.getSelectedItem().getValue().toString());
-                modelo.setExist(txtCantidad.getText());
+                modelo.setExist(txtExis.getText());
                 InstrumentoDal bd = new InstrumentoDal();
 
                 int res = bd.Crear(modelo);
@@ -134,6 +140,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
                     LlenarGrid();
                     limpiar();
+                    btnActualizar.setDisabled(true);
                     Messagebox.show("REGISTRO INGRESADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
                 } else {
                     Messagebox.show("ERROR AL INSERTAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
@@ -164,6 +171,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
                 modelo.setTipo(cbxTipo.getText());  
                 modelo.setCaracteristicas(txtCar.getText().toUpperCase());
                 modelo.setCategoria(cbxPadre.getSelectedItem().getValue().toString());
+                modelo.setExist(txtExis.getText());
                
                 InstrumentoDal bd = new InstrumentoDal();
 
@@ -172,6 +180,7 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
                     LlenarGrid();
                     limpiar();
+                    btnGuardar.setDisabled(false);
                     Messagebox.show("REGISTRO ACTUALIZADO CON EXITO", "Informacion", Messagebox.OK, Messagebox.INFORMATION);
                 } else {
                     Messagebox.show("ERROR AL ACTUALIZAR EL REGISTRO, COMUNIQUESE CON SU SUPERVISOR", "Informacion", Messagebox.OK, Messagebox.ERROR);
@@ -200,8 +209,10 @@ public class CtrLInstrumento extends GenericForwardComposer {
 
     public void LlenarGrid() throws SQLException, ParseException {
         InstrumentoDal buscar = new InstrumentoDal();
-
+        CategoriaDal padres = new CategoriaDal();
+        datosaux = padres.buscaGrid();
         datos = buscar.buscaGrid();
+        
         if (banderaGrid == 1) {
             row.getChildren().clear();
             rows.getChildren().clear();
@@ -225,7 +236,8 @@ public class CtrLInstrumento extends GenericForwardComposer {
             Label Categoria = new Label();
             ValoresLabel(Categoria, mov.getCategoria(), "");
             
-            
+            Label Existencias = new Label();
+            ValoresLabel(Existencias, mov.getExist(), "");
 
             Div acciones = new Div();
             acciones.setClass("text-center");
@@ -242,8 +254,8 @@ public class CtrLInstrumento extends GenericForwardComposer {
             row.appendChild(Tipo);
             row.appendChild(Caracteristicas);
             row.appendChild(Categoria);
+            row.appendChild(Existencias);
          
-
             row.appendChild(acciones);
 
             row.setParent(rows);
@@ -269,14 +281,14 @@ public class CtrLInstrumento extends GenericForwardComposer {
             txtId.setText(modelo.getId());
             txtMod.setText(modelo.getModelo());
             txtCar.setText(modelo.getCaracteristicas());
-            
+            txtExis.setText(modelo.getExist());
             
             int n = Integer.valueOf(modelo.getCategoria());
             cbxPadre.setSelectedIndex(n-1);
-      
+     
+            btnGuardar.setDisabled(true);
+            btnActualizar.setDisabled(false);
             cbxTipo.setText(modelo.getTipo());
-            
-
         }
     };
 
