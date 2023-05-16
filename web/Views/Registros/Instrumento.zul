@@ -13,7 +13,7 @@
             
                     <div sclass="row" >
                         <div sclass="col-md-12 text-center">
-                            <label value="REGISTRO CATEGORIA" style="font-size:20px; font-weight:bold;"   />
+                            <label value="" style="font-size:20px; font-weight:bold;"   />
                         </div>
                     </div>
                     <div id ="formulario" >
@@ -48,7 +48,8 @@
                                 <combobox id="cbxTipo"  width="100%" value="">
                                     <comboitem label="Electrico"/>
                                     <comboitem label="Acustico"/>
-                                    <comboitem label="Electroacustico"/>    
+                                    <comboitem label="Electroacustico"/>
+                                    <comboitem label="" value = ""/>
                                 </combobox>                       
                                 
                             </div>
@@ -71,12 +72,16 @@
                         <div sclass="row" >
                           
                             <div sclass="col-sm-4 col-md-2"></div>
-                            <div sclass="col-sm-4 col-md-8">
+                            <div sclass="col-md-4">
                                 <label value="CATEGORIA " style="font-weight:bold;"  />
-                                <combobox id="cbxPadre"  width="100%" value=""/>                         
-                                
+                                <combobox id="cbxPadre"  width="100%" value=""/>
                             </div>
-                        
+                            <div sclass="col-md-4">
+                                <label value="EXISTENCIAS " style="font-weight:bold;"  />
+                                <intbox id="txtExis" readonly="false"  width="100%"/>  
+                            </div>                    
+                            
+
                             <div sclass="col-sm-4 col-md-2"></div>
                         </div>
                     
@@ -110,6 +115,7 @@
                                     <column label="Tipo"   sort="auto" width ="20%" />
                                     <column label="Caracteristicas" sort="auto" width="20%"/>
                                     <column label="Categoria" sort="auto" width="20%"/>
+                                    <column label="Existencias" sort="auto" width="20%"/>
                                     <column label="Acciones"  width ="10%"/>
                                 </columns>
                                 <rows id="rows">

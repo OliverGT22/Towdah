@@ -23,7 +23,7 @@ public class InstrumentoDal {
             int result = 0;
 
             try {
-                String sql = "insert into INSTRUMENTO values ((SELECT IFNULL(MAX(INST_ID), 0)+1 FROM INSTRUMENTO i),?,?,?,?)";
+                String sql = "insert into INSTRUMENTO values ((SELECT IFNULL(MAX(INST_ID), 0)+1 FROM INSTRUMENTO i),?,?,?,?,?)";
 
                 conn.setAutoCommit(false);
 
@@ -32,6 +32,7 @@ public class InstrumentoDal {
                 smt.setString(2, modelo.getTipo());
                 smt.setString(3, modelo.getCaracteristicas().toUpperCase());
                 smt.setString(4, modelo.getCategoria());
+                smt.setString(5, modelo.getExist());
 
                 smt.executeUpdate();
 
@@ -66,7 +67,7 @@ public class InstrumentoDal {
              int result = 0;
 
             try {
-                String sql = "update INSTRUMENTO set INST_MODELO = ?, INST_TIPO = ?, INST_CARACT = ?, Categoria_CAT_ID = ? where INST_ID = ?";
+                String sql = "update INSTRUMENTO set INST_MODELO = ?, INST_TIPO = ?, INST_CARACT = ?, Categoria_CAT_ID = ?, INST_EXISTENCIAS = ? where INST_ID = ?";
 
                 conn.setAutoCommit(false);
 
@@ -76,7 +77,8 @@ public class InstrumentoDal {
                 smt.setString(2, modelo.getTipo());
                 smt.setString(3, modelo.getCaracteristicas());
                 smt.setString(4, modelo.getCategoria());
-                smt.setString(5, modelo.getId());
+                smt.setString(5, modelo.getExist());
+                smt.setString(6, modelo.getId());
                 
 
                 smt.executeUpdate();
@@ -152,6 +154,7 @@ public class InstrumentoDal {
                 Buscar.setTipo(result.getString(3));
                 Buscar.setCaracteristicas(result.getString(4));
                 Buscar.setCategoria(result.getString(5));
+                Buscar.setExist(result.getString(6));
                 
                 lista.add(Buscar);
             }
@@ -213,9 +216,7 @@ public class InstrumentoDal {
                 Buscar.setTipo(result.getString(3));
                 Buscar.setCaracteristicas(result.getString(4));
                 Buscar.setCategoria(result.getString(5));
-                
-                
-
+                Buscar.setExist(result.getString(6));
             }
             
             
