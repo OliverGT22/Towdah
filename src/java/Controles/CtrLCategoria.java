@@ -96,7 +96,7 @@ public class CtrLCategoria extends GenericForwardComposer {
 
         txtId.setText("");
         txtDesc.setText("");
-        cbxPadre.setText("");
+        cbxPadre.setSelectedIndex(cbxPadre.getItemCount()-1);
 
         btnGuardar.setDisabled(false);
         //btnImprimir.setDisabled(true);

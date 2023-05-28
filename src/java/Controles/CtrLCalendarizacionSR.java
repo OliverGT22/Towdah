@@ -130,6 +130,10 @@ public class CtrLCalendarizacionSR extends GenericForwardComposer {
 
     }
     
+    public void onClick$btnlogint(Event evt){
+        execution.sendRedirect("login.zul");
+    }
+    
 
     public void onClick$btnRest(Event evt) throws SQLException, ParseException {
 

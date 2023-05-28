@@ -9,13 +9,22 @@
         <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
             <!-- Brand Logo -->
             <n:br/>
+            
             <hlayout>
-                <image src="img/marex.png" sclass="pull-left"/>
                 <vlayout>
-                    <a label="Plantilla de Compra Ventas S.A. " sclass="titulos" />
-                    <a label="Sistema de Operaciones " sclass="titulos"  />
+                     <image sclass="img-responsive" src="/img/titulo.png" />
+              
                 </vlayout> 
             </hlayout>
+            <n:br/>
+            
+            <vlayout>
+               
+                <hlayout>    
+                    <label value="Volver al Login" id = "lbUser" width="100%" height="25px"  style="color:white;font-size: 1.8vw;"   /> 
+                    <button iconSclass="z-icon-user" id = "btnlogint" width="100%" height="25px"  /> 
+                </hlayout> 
+            </vlayout>
             <n:br/>
             
         </div>
@@ -81,7 +90,10 @@
                                 
                                 <div sclass="col-md-2">
                                     <button label="Restaurar" width="100%"   iconSclass="z-icon-spinner" id="btnRest" sclass="btn btn-primary btn-lg active" />
-                                </div>                  
+                                </div>
+                                
+                                
+                                                                    
                             <div sclass="col-md-3"/>
                         </div>
                     </div>  
