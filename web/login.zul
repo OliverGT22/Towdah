@@ -4,13 +4,15 @@
 <?link href="style.css" rel="stylesheet" type="text/css"?>
 
 <zk xmlns:n="native">
-    <div apply="Controles.login" sclass="col-md-12 col-sm-12">   
-        <div sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+    <div apply="Controles.login" sclass="col-md-12 col-sm-12" style="background-color: #F5F5F5;">   
+        <div sclass="col-md-12 col-sm-12 navbar" style="background-color: #008080;">
             <!-- Brand Logo -->
             <n:br/>
                  
-            <image sclass="img-responsive" src="/img/titulo.png" />
-         
+            <image sclass="img-responsive" src="/img/Towdah.png" height = "100px" />
+                <vlayout>
+                    <label value="Academia de musica Towdah" sclass="titulos"/>
+                </vlayout> 
             <n:br/>
             
         </div>

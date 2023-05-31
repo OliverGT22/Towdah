@@ -5,16 +5,12 @@
 
 
 <zk xmlns:n="native">
-    <div apply="Controles.CambioClave" sclass="col-md-12 col-sm-12">   
-        <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+    <div apply="Controles.CambioClave" sclass="col-md-12 col-sm-12" style="background-color: #F5F5F5;">   
+        <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #008080;">
             <!-- Brand Logo -->
             <n:br/>
             <hlayout>
-                <image src="img/marex.png" sclass="pull-left"/>
-                <vlayout>
-                    <a label="Expertajes Maritimos S.A. " sclass="titulos" />
-                    <a label="Sistema de Operaciones " sclass="titulos"  />
-                </vlayout> 
+                <image  src="/img/Towdah.png" height = "100px" sclass="pull-left"/>
             </hlayout>
             <n:br/>
             

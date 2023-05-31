@@ -1,6 +1,6 @@
 
 <zk xmlns:n="native">
-    <div  apply = "Controles.CtrLCategoria" xmlns:n="native" sclass="col-md-12 col-sm-12" >
+    <div  apply = "Controles.CtrLCategoria" xmlns:n="native" sclass="col-md-12 col-sm-12" style="background-color: #F5F5F5;" >
         <groupbox
             style="margin: 0 auto; border-radius: 5px; box-shadow: 1px 1px 1px"
             closable="false" width="100%;" mold="3d">

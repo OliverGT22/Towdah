@@ -1,7 +1,7 @@
 <div sclass="col-md-12 col-sm-12" xmlns:n="native" >
   
         <n:center>
-    <div sclass="col-md-12 col-sm-12 " id="imagen">
+    <div sclass="col-md-12 col-sm-12 " id="imagen" style="background-color: #F5F5F5;">
                 
             <image sclass="img-responsive" src="/img/inicio.jpeg" />
         

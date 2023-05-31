@@ -11,13 +11,13 @@
 
 <zk xmlns:n="native">
   
-    <div apply="Controles.MenuPage" sclass="col-md-12 col-sm-12">   
-        <div sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+    <div apply="Controles.MenuPage" sclass="col-md-12 col-sm-12" style="background-color: #F5F5F5;">   
+        <div sclass="col-md-12 col-sm-12 navbar"  style="background-color: #008080;">
             <!-- Brand Logo -->
             <n:br/>
             
             <vlayout>
-                <image sclass="img-responsive" src="/img/titulo.png" />
+                <image sclass="img-responsive" src="/img/Towdah.png" height = "100px" />
               
                 <hlayout>    
                     <label value="" id = "lbUser" width="100%" height="25px"  style="color:white;font-size: 1.8vw;"   /> 
@@ -28,7 +28,7 @@
             
         </div>        
     
-        <div sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+        <div sclass="col-md-12 col-sm-12 navbar"  style="background-color: #008080;">
             <hlayout sclass="nav-user pull-left" spacing="0">
                 <a href ="/menu.zul" id="menuInicio2" iconSclass="z-icon-home" popup="taskpp, position=after_end, type=toggle" sclass="grey" >
                     <label value="" style="color:white;font-size:8px;" />
@@ -64,7 +64,7 @@
         <n:br/>
     
         
-        <div xmlns:n="native"  sclass="col-md-12 col-sm-12 page-content">
+        <div xmlns:n="native"  sclass="col-md-12 col-sm-12 page-content" style="background-color: #F5F5F5;">
 
             <div sclass="col-md-12 col-sm-12  text-center">       
                 <label id="lbInicio" value="" style="font-size:40px; font-weight:bold;" />
@@ -72,7 +72,7 @@
             
             <n:br/>
             <n:br/>
-            <div sclass="col-md-12 col-sm-12 ">
+            <div sclass="col-md-12 col-sm-12 " style="background-color: #F5F5F5;">
                 <include id="pagina" />
             </div>
             <div sclass="col-md-12 col-sm-12 row">
