@@ -1,11 +1,14 @@
-<div sclass="col-md-12 col-sm-12" xmlns:n="native" >
+<?link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"?>
+<?link href="style.css" rel="stylesheet" type="text/css"?>
+<?link href="css/fonts.css" rel="stylesheet" type="text/css"?> 
+
+<div  apply="Controles.MenuPage" sclass="col-md-12 col-sm-12" xmlns:n="native" >
   
         <n:center>
-    <div sclass="col-md-12 col-sm-12 " id="imagen" style="background-color: #F5F5F5;">
-                
-            <image sclass="img-responsive" src="/img/inicio.jpeg" />
+    <div sclass="col-md-12 col-sm-12 " style="background-color: #F5F5F5;">
         
         </div>
     </n:center>
+
 </div>
 
