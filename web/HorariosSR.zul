@@ -5,14 +5,14 @@
 
 
 <zk xmlns:n="native">
-    <div apply="Controles.CtrLCalendarizacionSR" sclass="col-md-12 col-sm-12">   
-        <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #872e01;">
+    <div apply="Controles.CtrLCalendarizacionSR" sclass="col-md-12 col-sm-12" style="background-color: #F5F5F5;">   
+        <div id ="div1" sclass="col-md-12 col-sm-12 navbar" style="background-color: #008080;">
             <!-- Brand Logo -->
             <n:br/>
             
             <hlayout>
                 <vlayout>
-                     <image sclass="img-responsive" src="/img/titulo.png" />
+                     <image sclass="img-responsive" src="/img/Towdah.png" height = "100px" />
               
                 </vlayout> 
             </hlayout>
@@ -22,7 +22,7 @@
                
                 <hlayout>    
                     <label value="Volver al Login" id = "lbUser" width="100%" height="25px"  style="color:white;font-size: 1.8vw;"   /> 
-                    <button iconSclass="z-icon-user" id = "btnlogint" width="100%" height="25px"  /> 
+                    <button iconSclass="z-icon-arrow-left" id = "btnlogint" width="100%" height="25px"  /> 
                 </hlayout> 
             </vlayout>
             <n:br/>
@@ -85,11 +85,11 @@
                         <div sclass="row" >
                             <div sclass="col-md-3"/>
                              <div sclass="col-md-2">
-                                    <button label="Guardar"  width="100%"  iconSclass="z-icon-search" id="btnGuardar" sclass="btn btn-primary btn-lg active" />
+                                    <button label="Consultar"  width="100%"  iconSclass="z-icon-search" id="btnGuardar" sclass="btn btn-primary btn-lg active" />
                                 </div>
                                 
                                 <div sclass="col-md-2">
-                                    <button label="Restaurar" width="100%"   iconSclass="z-icon-spinner" id="btnRest" sclass="btn btn-primary btn-lg active" />
+                                    <button label="Restaurar" width="100%"   iconSclass="z-icon-rotate-left" id="btnRest" sclass="btn btn-primary btn-lg active" />
                                 </div>
                                 
                                 
